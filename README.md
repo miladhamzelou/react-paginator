@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/doctolib/react-paginator.svg?theme=shields.io)](https://david-dm.org/doctolib/react-paginator)
 [![devDependency Status](https://david-dm.org/doctolib/react-paginator/dev-status.svg?theme=shields.io)](https://david-dm.org/doctolib/react-paginator#info=devDependencies)
 
-Basic paginator component for React. This component is designed to use with Bootstrap but you can use it with your own style.
+Basic paginator component for React. This component is designed to be used with Bootstrap but you can use it with your own style.
 
 ## Install
 
