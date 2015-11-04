@@ -1,6 +1,6 @@
 {
   "name": "@doctolib/react-paginator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Basic paginator component for React.",
   "main": "lib/index.js",
   "files": [
