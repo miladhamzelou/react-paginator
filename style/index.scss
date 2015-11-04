@@ -1,0 +1,21 @@
+// Paginator
+// ----------
+
+.pagination-infos {
+  display: inline-block;
+  font-size: 14px;
+  color: #777;
+  margin: 20px 10px 20px 0;
+  padding: 10px 0;
+  vertical-align: top;
+
+  &.pagination-infos-sm {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+
+  &.pagination-infos-lg {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+}
