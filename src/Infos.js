@@ -15,7 +15,7 @@ export default React.createClass({
     const className = `pagination-infos pagination-infos-${SIZE_PREFIXES[this.props.size]}`;
     return (
       <div className={className}>
-        {`${this.props.min}-${this.props.max} sur ${this.props.total}`}
+        {`${this.props.min}-${this.props.max} / ${this.props.total}`}
       </div>
     );
   }

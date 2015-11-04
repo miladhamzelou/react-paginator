@@ -2,8 +2,58 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Paginator from '../../src';
+import Playground from './Playground';
 
 const SIZES = ['small', 'medium', 'large'];
+
+const ALL_SIZE_CODE = `<Paginator
+  size="small"
+  nbRowsPerPage={20}
+  onPageChange={this.onPageChange}
+  page={this.state.page}
+  total={200}
+/>
+
+<Paginator
+  size="medium"
+  nbRowsPerPage={20}
+  onPageChange={this.onPageChange}
+  page={this.state.page}
+  total={200}
+/>
+
+<Paginator
+  size="large"
+  nbRowsPerPage={20}
+  onPageChange={this.onPageChange}
+  page={this.state.page}
+  total={200}
+/>
+`;
+
+const CONDENSED_CODE = `<Paginator
+  condensed
+  nbRowsPerPage={20}
+  onPageChange={this.onPageChange}
+  page={this.state.page}
+  total={200}
+/>`;
+
+const INFOS_CODE = `<Paginator
+  nbRowsPerPage={20}
+  onPageChange={this.onPageChange}
+  page={this.state.page}
+  showInfos
+  total={200}
+/>`;
+
+const DISABLED_CODE = `<Paginator
+  disabled
+  nbRowsPerPage={20}
+  onPageChange={this.onPageChange}
+  page={this.state.page}
+  total={200}
+/>`;
 
 const Example = React.createClass({
   displayName: 'Example',
@@ -27,8 +77,8 @@ const Example = React.createClass({
    * @param {object} [props={}]
    * @returns {ReactElement[]}
    */
-  renderPaginators(props = {}) {
-    return SIZES.map(size => (
+  renderPaginators(props = {}, sizes = ['medium']) {
+    return sizes.map(size => (
       <Paginator
         key={size}
         nbRowsPerPage={20}
@@ -44,14 +94,22 @@ const Example = React.createClass({
   render() {
     return (
       <div>
-        <h3>Basic</h3>
-        {this.renderPaginators()}
+        <h3>All sizes</h3>
+        <Playground code={ALL_SIZE_CODE}>
+          {this.renderPaginators({}, SIZES)}
+        </Playground>
         <h3>Condensed</h3>
-        {this.renderPaginators({condensed: true})}
+        <Playground code={CONDENSED_CODE}>
+          {this.renderPaginators({condensed: true})}
+        </Playground>
         <h3>With informations</h3>
-        {this.renderPaginators({showInfos: true})}
+        <Playground code={INFOS_CODE}>
+          {this.renderPaginators({showInfos: true})}
+        </Playground>
         <h3>Disabled</h3>
-        {this.renderPaginators({disabled: true})}
+        <Playground code={DISABLED_CODE}>
+          {this.renderPaginators({disabled: true})}
+        </Playground>
       </div>
     );
   }

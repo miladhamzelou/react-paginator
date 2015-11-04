@@ -42,11 +42,14 @@
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.2",
     "react-dom": "^0.14.0",
+    "react-prism": "^3.0.0",
+    "react-pure-render": "^1.0.2",
     "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0"
   },
   "examples": {
-    "title": "React paginator"
+    "title": "React paginator",
+    "codeHighlighting": true
   },
   "dependencies": {
     "babel-runtime": "^6.0.14",

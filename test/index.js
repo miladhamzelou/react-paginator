@@ -178,7 +178,7 @@ describe('Paginator', () => {
       const domElement = ReactDOM.findDOMNode(instance);
       const infos = domElement.querySelector('div:first-child');
 
-      expect(infos).to.have.text('181-200 sur 300');
+      expect(infos).to.have.text('181-200 / 300');
       expect(infos).to.class('pagination-infos');
       expect(infos).to.class('pagination-infos-lg');
     });
