@@ -3,3 +3,5 @@ node_js:
   - "stable"
 script:
     - npm run travis
+sudo: required
+dist: trusty
