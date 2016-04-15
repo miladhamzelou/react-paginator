@@ -1,37 +1,31 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 
-export default React.createClass({
-  displayName: 'PaginatorButton',
-
-  propTypes: {
+export default class Button extends Component {
+  static propTypes = {
     active: PropTypes.bool.isRequired,
     ariaLabel: PropTypes.string,
     disabled: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
     onPageChange: PropTypes.func,
     page: PropTypes.number
-  },
+  };
 
-  getDefaultProps() {
-    return {
-      active: false,
-      disabled: false
-    };
-  },
+  static defaultProps = {
+    active: false,
+    disabled: false
+  };
 
   /**
    * Called when the user click on the link.
    *
    * @param {SyntheticEvent} event
    */
-
-  onClick(event) {
+  handleClick = event => {
     event.preventDefault();
-
     if (this.props.onPageChange)
       this.props.onPageChange(this.props.page);
-  },
+  };
 
   render() {
     const className = classNames({
@@ -41,10 +35,10 @@ export default React.createClass({
 
     return (
       <li className={className}>
-        <a aria-label={this.props.ariaLabel || this.props.label} href="#" onClick={this.onClick}>
+        <a aria-label={this.props.ariaLabel || this.props.label} href="#" onClick={this.handleClick}>
           <span aria-hidden="true">{this.props.label}</span>
         </a>
       </li>
     );
   }
-});
+}

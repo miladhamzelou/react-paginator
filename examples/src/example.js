@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import Paginator from '../../src';
@@ -9,7 +9,7 @@ const SIZES = ['small', 'medium', 'large'];
 const ALL_SIZE_CODE = `<Paginator
   size="small"
   nbRowsPerPage={20}
-  onPageChange={this.onPageChange}
+  onPageChange={this.handlePageChange}
   page={this.state.page}
   total={200}
 />
@@ -17,7 +17,7 @@ const ALL_SIZE_CODE = `<Paginator
 <Paginator
   size="medium"
   nbRowsPerPage={20}
-  onPageChange={this.onPageChange}
+  onPageChange={this.handlePageChange}
   page={this.state.page}
   total={200}
 />
@@ -25,7 +25,7 @@ const ALL_SIZE_CODE = `<Paginator
 <Paginator
   size="large"
   nbRowsPerPage={20}
-  onPageChange={this.onPageChange}
+  onPageChange={this.handlePageChange}
   page={this.state.page}
   total={200}
 />
@@ -34,14 +34,14 @@ const ALL_SIZE_CODE = `<Paginator
 const CONDENSED_CODE = `<Paginator
   condensed
   nbRowsPerPage={20}
-  onPageChange={this.onPageChange}
+  onPageChange={this.handlePageChange}
   page={this.state.page}
   total={200}
 />`;
 
 const INFOS_CODE = `<Paginator
   nbRowsPerPage={20}
-  onPageChange={this.onPageChange}
+  onPageChange={this.handlePageChange}
   page={this.state.page}
   showInfos
   total={200}
@@ -50,26 +50,22 @@ const INFOS_CODE = `<Paginator
 const DISABLED_CODE = `<Paginator
   disabled
   nbRowsPerPage={20}
-  onPageChange={this.onPageChange}
+  onPageChange={this.handlePageChange}
   page={this.state.page}
   total={200}
 />`;
 
-const Example = React.createClass({
-  displayName: 'Example',
-
-  getInitialState() {
-    return {page: 1};
-  },
+class Example extends Component {
+  state = {page: 1};
 
   /**
    * Called when page change.
    *
    * @param {number} page
    */
-  onPageChange(page) {
+  handlePageChange = page => {
     this.setState({page});
-  },
+  };
 
   /**
    * Render paginators in all sizes.
@@ -82,14 +78,14 @@ const Example = React.createClass({
       <Paginator
         key={size}
         nbRowsPerPage={20}
-        onPageChange={this.onPageChange}
+        onPageChange={this.handlePageChange}
         page={this.state.page}
         size={size}
         total={200}
         {...props}
       />
     ));
-  },
+  }
 
   render() {
     return (
@@ -113,6 +109,6 @@ const Example = React.createClass({
       </div>
     );
   }
-});
+}
 
-ReactDOM.render(<Example/>, document.getElementById('example'));
+ReactDOM.render(<Example />, document.getElementById('example'));

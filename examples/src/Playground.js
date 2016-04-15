@@ -1,44 +1,38 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Component} from 'react';
 import {PrismCode} from 'react-prism';
 
-export default React.createClass({
-  displayName: 'Playground',
-
-  propTypes: {
+export default class Playground extends Component {
+  static propTypes = {
     children: PropTypes.node,
     code: PropTypes.string
-  },
+  };
 
-  getInitialState() {
-    return {showCode: false};
-  },
+  state = {showCode: false};
 
   renderCodeToggle() {
     const className = `code-toggle ${this.state.showCode ? 'open' : ''}`;
-    return this.props.code
-      ? (
-          <a
-            className={className}
-            onClick={this.onClickCodeToggle}
-            role="button"
-          >
-            {this.state.showCode ? 'hide code' : 'show code'}
-          </a>
-      )
-      : null;
-  },
+    return this.props.code ? (
+      <a
+        className={className}
+        onClick={this.handleClickCodeToggle}
+        role="button"
+      >
+        {this.state.showCode ? 'hide code' : 'show code'}
+      </a>
+    ) : null;
+  }
 
-  onClickCodeToggle() {
+  handleClickCodeToggle = () => {
     this.setState({showCode: !this.state.showCode});
-  },
+  };
 
   renderCode() {
     return this.state.showCode ? (
-        <div className="code">
-          <PrismCode className="language-javascript">{this.props.code}</PrismCode>
-        </div>
-      ) : null;
-  },
+      <div className="code">
+        <PrismCode className="language-javascript">{this.props.code}</PrismCode>
+      </div>
+    ) : null;
+  }
 
   render() {
     return (
@@ -49,4 +43,4 @@ export default React.createClass({
       </div>
     );
   }
-});
+}

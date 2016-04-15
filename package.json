@@ -28,23 +28,24 @@
   },
   "homepage": "http://doctolib.github.io/react-paginator/",
   "devDependencies": {
-    "@doctolib/gulp-tasks": "^4.0.0",
-    "babel-eslint": "^5.0.0-beta6",
-    "babel-preset-doctolib": "^1.1.2",
+    "@doctolib/gulp-tasks": "^5.0.0",
+    "babel-eslint": "^6.0.2",
+    "babel-preset-doctolib": "^2.0.0",
     "chai": "^3.4.0",
     "chai-dom": "^1.2.0",
-    "eslint": "^1.10.3",
-    "eslint-config-doctolib": "^1.1.1",
-    "eslint-plugin-mocha": "^1.0.0",
-    "eslint-plugin-react": "^3.6.3",
+    "dirty-chai": "^1.2.2",
+    "eslint": "^2.7.0",
+    "eslint-config-doctolib": "^2.0.0",
+    "eslint-plugin-mocha": "^2.2.0",
+    "eslint-plugin-react": "^4.3.0",
     "gulp": "^3.9.0",
     "jsdom": "^8.0.0",
     "mocha-jsdom": "^1.0.0",
-    "react": "^0.14.0",
-    "react-addons-pure-render-mixin": "^0.14.6",
-    "react-addons-test-utils": "^0.14.2",
-    "react-dom": "^0.14.0",
-    "react-prism": "^3.1.0",
+    "react": "^15.0.1",
+    "react-addons-pure-render-mixin": "^15.0.1",
+    "react-addons-test-utils": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-prism": "^3.1.1",
     "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0"
   },
@@ -53,11 +54,10 @@
     "codeHighlighting": true
   },
   "dependencies": {
-    "babel-runtime": "^6.3.19",
     "classnames": "^2.2.0",
     "lodash.range": "^3.0.1"
   },
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^15.0.1"
   }
 }

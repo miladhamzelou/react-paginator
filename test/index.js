@@ -7,8 +7,10 @@ import chai, {expect} from 'chai';
 import chaiDom from 'chai-dom';
 import sinonChai from 'sinon-chai';
 import sinon from 'sinon';
+import dirtyChai from 'dirty-chai';
 
 chai
+  .use(dirtyChai)
   .use(chaiDom)
   .use(sinonChai);
 
@@ -235,7 +237,7 @@ describe('Paginator', () => {
       TestUtils.Simulate.click(next.querySelector('a'));
       TestUtils.Simulate.click(centerBreak.querySelector('a'));
 
-      expect(spy).to.not.have.been.called;
+      expect(spy).to.not.have.been.called();
     });
   });
 });

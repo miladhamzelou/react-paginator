@@ -1,14 +1,12 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import range from 'lodash.range';
 
 import Button from './Button';
 import Infos from './Infos';
 import {SIZE_PREFIXES} from './utils';
 
-export default React.createClass({
-  displayName: 'Paginator',
-
-  propTypes: {
+export default class Paginator extends Component {
+  static propTypes = {
     breakLabel: PropTypes.string.isRequired,
     className: PropTypes.string,
     condensed: PropTypes.bool.isRequired,
@@ -28,37 +26,35 @@ export default React.createClass({
     showInfos: PropTypes.bool.isRequired,
     size: PropTypes.oneOf(['large', 'medium', 'small']).isRequired,
     total: PropTypes.number.isRequired
-  },
+  };
 
-  getDefaultProps() {
-    return {
-      breakLabel: '…',
-      condensed: false,
-      disabled: false,
-      firstAriaLabel: 'First',
-      firstLabel: '«',
-      lastAriaLabel: 'Last',
-      lastLabel: '»',
-      onPageChange: () => {},
-      nextAriaLabel: 'Next',
-      nextLabel: '›',
-      pageRange: 3,
-      previousAriaLabel: 'Previous',
-      previousLabel: '‹',
-      size: 'medium',
-      showInfos: false
-    };
-  },
+  static defaultProps = {
+    breakLabel: '…',
+    condensed: false,
+    disabled: false,
+    firstAriaLabel: 'First',
+    firstLabel: '«',
+    lastAriaLabel: 'Last',
+    lastLabel: '»',
+    onPageChange: () => {},
+    nextAriaLabel: 'Next',
+    nextLabel: '›',
+    pageRange: 3,
+    previousAriaLabel: 'Previous',
+    previousLabel: '‹',
+    size: 'medium',
+    showInfos: false
+  };
 
   /**
    * Called when page change.
    *
    * @param {number} page
    */
-  onPageChange(page) {
+  handlePageChange = page => {
     if (page >= 1 && page <= this.getNbPages() && !this.props.disabled)
       this.props.onPageChange(page);
-  },
+  };
 
   /**
    * Get number of pages.
@@ -68,7 +64,7 @@ export default React.createClass({
   getNbPages() {
     const nbPages = Math.ceil(this.props.total / this.props.nbRowsPerPage);
     return nbPages <= 0 ? 1 : nbPages;
-  },
+  }
 
   /**
    * Get min range.
@@ -77,7 +73,7 @@ export default React.createClass({
    */
   getMinRange() {
     return (Math.ceil(this.props.page / this.props.pageRange) - 1) * this.props.pageRange + 1;
-  },
+  }
 
   /**
    * Get max range.
@@ -87,7 +83,7 @@ export default React.createClass({
   getMaxRange() {
     const max = this.getMinRange() + this.props.pageRange - 1;
     return max < this.getNbPages() ? max : this.getNbPages();
-  },
+  }
 
   /**
    * Render informations.
@@ -107,7 +103,7 @@ export default React.createClass({
         total={this.props.total}
       />
     );
-  },
+  }
 
   /**
    * Render pages.
@@ -116,11 +112,11 @@ export default React.createClass({
    */
   renderPages() {
     if (this.props.disabled)
-      return <Button disabled label={this.props.breakLabel}/>;
+      return <Button disabled label={this.props.breakLabel} />;
 
     return range(this.getMinRange(), this.getMaxRange() + 1)
       .map(this.renderPage);
-  },
+  }
 
   /**
    * Render page.
@@ -129,17 +125,17 @@ export default React.createClass({
    * @param {number} index
    * @returns {ReactElement}
    */
-  renderPage(page, index) {
+  renderPage = (page, index) => {
     return (
       <Button
         active={this.props.page === page}
         key={index}
         label={String(page)}
-        onPageChange={this.onPageChange}
+        onPageChange={this.handlePageChange}
         page={page}
       />
     );
-  },
+  };
 
   /**
    * Render previous button.
@@ -153,7 +149,7 @@ export default React.createClass({
       label: this.props.previousLabel,
       page: this.props.page - 1
     });
-  },
+  }
 
   /**
    * Render next button.
@@ -167,7 +163,7 @@ export default React.createClass({
       label: this.props.nextLabel,
       page: this.props.page + 1
     });
-  },
+  }
 
   /**
    * Render neighbour.
@@ -185,11 +181,11 @@ export default React.createClass({
         ariaLabel={ariaLabel}
         disabled={disabled || this.props.disabled}
         label={label}
-        onPageChange={this.onPageChange}
+        onPageChange={this.handlePageChange}
         page={page}
       />
     );
-  },
+  }
 
   /**
    * Render the last buttton.
@@ -202,7 +198,7 @@ export default React.createClass({
       label: this.props.firstLabel,
       page: 1
     });
-  },
+  }
 
   /**
    * Render the last buttton.
@@ -215,7 +211,7 @@ export default React.createClass({
       label: this.props.lastLabel,
       page: this.getNbPages()
     });
-  },
+  }
 
   /**
    * Render boundary.
@@ -232,11 +228,11 @@ export default React.createClass({
         ariaLabel={ariaLabel}
         disabled={this.props.disabled || this.props.page === page}
         label={label}
-        onPageChange={this.onPageChange}
+        onPageChange={this.handlePageChange}
         page={page}
       />
     );
-  },
+  }
 
   /**
    * Render previous break.
@@ -245,7 +241,7 @@ export default React.createClass({
    */
   renderPreviousBreak() {
     return this.renderBreak(this.getMinRange() - 1);
-  },
+  }
 
   /**
    * Render next break.
@@ -254,7 +250,7 @@ export default React.createClass({
    */
   renderNextBreak() {
     return this.renderBreak(this.getMaxRange() + 1);
-  },
+  }
 
   /**
    * Render break.
@@ -269,11 +265,11 @@ export default React.createClass({
     return (
       <Button
         label={this.props.breakLabel}
-        onPageChange={this.onPageChange}
+        onPageChange={this.handlePageChange}
         page={page}
       />
     );
-  },
+  }
 
   render() {
     const sizePrefix = SIZE_PREFIXES[this.props.size];
@@ -305,4 +301,4 @@ export default React.createClass({
       </div>
     );
   }
-});
+}
