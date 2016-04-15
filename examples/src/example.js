@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
+import PureComponent from '../../src/PureComponent';
 import Paginator from '../../src';
 import Playground from './Playground';
 
@@ -55,7 +56,7 @@ const DISABLED_CODE = `<Paginator
   total={200}
 />`;
 
-class Example extends Component {
+class Example extends PureComponent {
   state = {page: 1};
 
   /**

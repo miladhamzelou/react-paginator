@@ -1,7 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
+import PureComponent from './PureComponent';
 import classNames from 'classnames';
 
-export default class Button extends Component {
+export default class Button extends PureComponent {
   static propTypes = {
     active: PropTypes.bool.isRequired,
     ariaLabel: PropTypes.string,

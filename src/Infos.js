@@ -1,7 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
+import PureComponent from './PureComponent';
 import {SIZE_PREFIXES} from './utils';
 
-export default class Infos extends Component {
+export default class Infos extends PureComponent {
   static propTypes = {
     max: PropTypes.number.isRequired,
     min: PropTypes.number.isRequired,

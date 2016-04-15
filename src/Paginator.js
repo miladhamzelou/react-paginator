@@ -1,11 +1,12 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
+import PureComponent from './PureComponent';
 import range from 'lodash.range';
 
 import Button from './Button';
 import Infos from './Infos';
 import {SIZE_PREFIXES} from './utils';
 
-export default class Paginator extends Component {
+export default class Paginator extends PureComponent {
   static propTypes = {
     breakLabel: PropTypes.string.isRequired,
     className: PropTypes.string,
