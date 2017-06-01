@@ -1,5 +1,6 @@
 # react-paginator
 [![Build Status](https://travis-ci.org/doctolib/react-paginator.svg?branch=master)](https://travis-ci.org/doctolib/react-paginator)
+[![codecov](https://codecov.io/gh/doctolib/react-paginator/branch/master/graph/badge.svg)](https://codecov.io/gh/doctolib/react-paginator)
 
 Basic paginator component for React. This component is designed to be used with Bootstrap but you can use it with your own style.
 
