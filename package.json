@@ -3,15 +3,11 @@
   "version": "2.0.2",
   "description": "Basic paginator component for React.",
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
   "scripts": {
-    "cover": "gulp cover",
-    "coveralls": "gulp coveralls",
-    "travis": "npm run lint && npm run coveralls",
     "lint": "eslint .",
-    "test": "gulp test"
+    "prepublish": "NODE_ENV=production babel -d lib src",
+    "test": "yarn lint && yarn test:unit",
+    "test:unit": "jest --coverage && codecov"
   },
   "repository": {
     "type": "git",
@@ -28,37 +24,34 @@
   },
   "homepage": "http://doctolib.github.io/react-paginator/",
   "devDependencies": {
-    "@doctolib/gulp-tasks": "^5.0.0",
-    "babel-eslint": "^6.0.2",
-    "babel-preset-doctolib": "^2.0.0",
-    "chai": "^3.4.0",
-    "chai-dom": "^1.2.0",
-    "dirty-chai": "^1.2.2",
-    "eslint": "^2.7.0",
-    "eslint-config-doctolib": "^2.0.0",
-    "eslint-plugin-mocha": "^2.2.0",
-    "eslint-plugin-react": "^4.3.0",
-    "gulp": "^3.9.0",
-    "jsdom": "^8.0.0",
-    "mocha-jsdom": "^1.0.0",
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-doctolib": "^3.0.2",
+    "codecov": "^2.2.0",
+    "enzyme": "^2.8.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-doctolib": "^5.0.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "jest": "^20.0.4",
     "react": "^15.0.1",
-    "react-addons-pure-render-mixin": "^15.0.1",
-    "react-addons-test-utils": "^15.0.1",
     "react-dom": "^15.0.1",
-    "react-prism": "^3.1.1",
-    "sinon": "^1.17.2",
-    "sinon-chai": "^2.8.0"
-  },
-  "examples": {
-    "title": "React paginator",
-    "codeHighlighting": true
+    "react-test-renderer": "^15.5.4"
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "lodash.range": "^3.0.1"
+    "lodash.range": "^3.0.1",
+    "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "react": "^15.0.1",
-    "react-addons-pure-render-mixin": "^15.0.1"
+    "react": "^15.0.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "coverageDirectory": "./coverage/"
   }
 }

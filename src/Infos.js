@@ -1,21 +1,18 @@
-import React, {PropTypes} from 'react';
-import PureComponent from './PureComponent';
-import {SIZE_PREFIXES} from './utils';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { SIZE_PREFIXES } from './utils'
 
-export default class Infos extends PureComponent {
-  static propTypes = {
-    max: PropTypes.number.isRequired,
-    min: PropTypes.number.isRequired,
-    size: PropTypes.string.isRequired,
-    total: PropTypes.number.isRequired
-  };
+const Infos = ({ max, min, size, total }) => (
+  <div className={`pagination-infos pagination-infos-${SIZE_PREFIXES[size]}`}>
+    {`${min}-${max} / ${total}`}
+  </div>
+)
 
-  render() {
-    const className = `pagination-infos pagination-infos-${SIZE_PREFIXES[this.props.size]}`;
-    return (
-      <div className={className}>
-        {`${this.props.min}-${this.props.max} / ${this.props.total}`}
-      </div>
-    );
-  }
+Infos.propTypes = {
+  max: PropTypes.number.isRequired,
+  min: PropTypes.number.isRequired,
+  size: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
 }
+
+export default Infos
