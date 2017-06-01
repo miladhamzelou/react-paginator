@@ -1,0 +1,9 @@
+{
+  "extends": ["doctolib", "doctolib/react"],
+  "rules": {
+    "react/sort-comp": "off"
+  },
+  "env": {
+    "jest": true
+  }
+}
